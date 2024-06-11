@@ -1,0 +1,24 @@
+import json
+
+import requests
+from bs4 import BeautifulSoup as bf
+
+r = requests.get("https://massamiveiculos.com.br/categoria-produto/todas-as-marcas/")
+# print(r.status_code)
+# print(r.headers["content-type"])
+# print(r.encoding)
+# print(r.text)
+# data = r.json()
+# for key in data:
+#     {print(key, ":", data[key])}
+# print(json.dumps(data, indent=4, sort_keys=True))
+soup = bf(r.text, "html.parser")
+cars = soup.find_all(
+    "li",
+    attrs={
+        "class": "title",
+    },
+)
+
+for car in cars:
+    print(car.find("a").contents)
