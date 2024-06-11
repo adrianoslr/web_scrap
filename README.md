@@ -1,1 +1,3 @@
-No need requirements
+requirement needed:
+beautifulsoup
+requests
